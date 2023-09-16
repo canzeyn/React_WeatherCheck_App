@@ -73,7 +73,7 @@ const ApiKeyPage = () => {
 
   console.log(apiKey);
   return (
-    <div className="min-h-screen" style={{ backgroundImage: 'url("images/genişEkranArkaPlan.png")' }} >
+    <div className="min-h-screen" style={{ backgroundImage: 'url("images/genisEkranArkaPlan.png")' }} >
       <form className="flex flex-col justify-center items-center h-screen w-full space-y-3 ">
 
         {/* baslik */}
