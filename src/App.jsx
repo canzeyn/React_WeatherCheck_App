@@ -7,6 +7,8 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import { Provider } from 'react-redux';
 import { store } from "./components/redux/store"
 import CitySelectionPage from './components/CitySelectionPage';
+import CityWeatherInfo from './components/CityWeatherInfo';
+import WeatherChart from './components/WeatherChart';
 
 function App() {
   return (
@@ -27,6 +29,14 @@ function App() {
               <CitySelectionPage />
             </PrivateRoute>
           } />
+
+          <Route path="/havaDurumuBilgisi" element={
+            // bu kısım PrivateRoute ile sadece izinli kişilerce görüntülenebilmesi için yapıldı
+            <PrivateRoute>
+              <CityWeatherInfo />
+            </PrivateRoute>
+          } />
+          <Route path='/deneme' element={<WeatherChart />} />
 
         </Routes>
       </Router>
