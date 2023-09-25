@@ -23,7 +23,7 @@ const WeatherChart = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Area type="monotone" dataKey="derece" stroke="#FFF7D4" fill="#FFF7D4" name="Derece (°C)" />
+            <Area type="monotone" dataKey="derece" stroke="#4C3D3D" fill="#FFF7D4" name="Derece (°C)" />
           </AreaChart>
         </ResponsiveContainer>
       </div>

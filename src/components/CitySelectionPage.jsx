@@ -12,14 +12,11 @@ const CitySelectionPage = () => {
 
   const [searchTermCities , setSearchTermCities] = useState("");
 
-    const cities = useSelector(state => state.data.cities);
+     const cities = useSelector(state => state.data.cities);
 
-    const handleClickCity = async (selectedCity) => {
-     await dispatch(fetchWeatherData(selectedCity))
-     console.log(selectedCity)
-    }
-
-    
+    const handleClickCity = (selectedCity) => {
+      navigate(`/sehirBilgisi/${selectedCity}`); //burada seçilen şehir ismini diğer componente parametre olarak geçiyoruz url kısmına
+  } 
 
     const filteredCities = cities.filter(city => city.state_name.toLowerCase().includes(searchTermCities.toLowerCase()))
 

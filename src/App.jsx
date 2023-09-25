@@ -30,7 +30,7 @@ function App() {
             </PrivateRoute>
           } />
 
-          <Route path="/havaDurumuBilgisi" element={
+          <Route path="/sehirBilgisi/:cityName" element={
             // bu kısım PrivateRoute ile sadece izinli kişilerce görüntülenebilmesi için yapıldı
             <PrivateRoute>
               <CityWeatherInfo />

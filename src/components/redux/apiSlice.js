@@ -7,7 +7,7 @@ export const fetchWeatherData = createAsyncThunk(  //bir apiden veri çekeceğim
     "weather/fetchWeatheData", //ilk olarak slice adını alıyor ikinici olarak action type veriliyor 
     async (city) => { //buraya kullanıcın tıkladığı şehir isim bilgisi geliyor 
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`); //şehir isteği atıcağız apiye hava durumu bilgisi için şehir bilgisini kullanıcın tıkladığı şehirin adını alıcak ve apiden o şehrin hava durumu bilgisini getiricek
-        console.log("API Response:", response.data); 
+        // console.log("API Response:", response.data); 
         return response.data //aixos ile dönen veriyi data olarak alıyoruz ve return ediyoruz
         
     }

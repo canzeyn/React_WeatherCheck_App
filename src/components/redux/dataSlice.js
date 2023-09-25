@@ -23,14 +23,14 @@ export const fetchCountriesData = createAsyncThunk(
 export const fetchCitiesData = createAsyncThunk(
   'data/fetchCities',
   async (iso2, thunkAPI) => { //burada kullanıcının tıkladıpı ülkenin iso2 kodu ile o ülkeye ait şehirleri buluyoruz
-    const response = await axios.get('/cities.csv', { responseType: 'text' }); //burada sadece o ülkeye ait olan verileri çekiyoruz
+    const response = await axios.get('/cities.csv', { responseType: 'text' }); //burada sadece o ülkeye ait olan verileri çekmek için istek atıyoruz
     const csvText = response.data;
 
     return new Promise((resolve) => {
       Papa.parse(csvText, {
         header: true,
         complete: (results) => {
-          const filteredCities = results.data.filter(city => city.country_code === iso2)
+          const filteredCities = results.data.filter(city => city.country_code === iso2) //burada filter methodu ile tıklanan ülkenin iso2 kodunu alıyoruz ve tüm şehirlerden eşleşen şehirleri alıyoruz
           resolve(filteredCities);
         }
       });

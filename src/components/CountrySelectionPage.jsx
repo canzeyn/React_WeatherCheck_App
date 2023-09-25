@@ -1,6 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchCountriesData } from './redux/dataSlice';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -18,23 +17,24 @@ const CountrySelectionPage = () => {
 
 
   useEffect(() => {
-    if (!countries.length) {
-      dispatch(fetchCountriesData());
+    if (!countries.length) { //burada eğer redux içinden gelen countries adlı state boş ise redux içindeki bir action tetiklenir ve çalışır 
+      dispatch(fetchCountriesData()); //ülke isimlerini dataset içinden çeken action tetikleniyor ve çalışıyor  
     }
-  }, []);
+  }, []); 
 
   useEffect(() => {
     console.log(countries);
   }, [countries]);
 
   const filteredCountry = countries ? countries.filter(country => country && country.name &&  country.name.toLowerCase().includes(searchTermCountry.toLowerCase())) : [];
-
+//burada birkaç defa çekeceğimiz verilerin kontrolünü yapıyoruz çünkü büyük datasetler ile çalışıyoruz ve eğer bir değerde dahi istedğimiz veriyi çekemezsek sistem hata verir 
+//bunun içinilk olarak redux içinden çektiğimiz countries adlı state içinde bir verinin var olup olmadığına bakıyoruz ikinci olarak gelen verilerden name verisinin var olup olmadığına bakıyoruz hepsi tamamsa fonksiyon çalışır ve istediğimiz ülke ismini aratabiliriz
 
 
   const getCountryISO2 = (iso2, event) => {
-    event.preventDefault();
-    setCountryISO2(iso2);
-    navigate(`/sehirSecimSayfası/${iso2}`)
+    event.preventDefault(); //sayfa yenilenmesini engelliyor 
+    setCountryISO2(iso2); //buradan tıklanan ülkenin iso2 kodu state içine atlıyor 
+    navigate(`/sehirSecimSayfası/${iso2}`) //yönlendirilen sayfaya parametre olarak bu kod geçiliyor bu sayede o koda sahip olan şehirler getirilecek dataset içinden 
 
     dispatch(fetchCitiesData(iso2));
 
