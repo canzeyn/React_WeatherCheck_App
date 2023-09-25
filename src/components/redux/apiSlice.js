@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-const apiKey = "2f980645a1183143ee775518061de1e1";
+const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
 export const fetchWeatherData = createAsyncThunk(  //bir apiden veri çekeceğimiz için bu fonksiyonu kullanıyoruz
     "weather/fetchWeatheData", //ilk olarak slice adını alıyor ikinici olarak action type veriliyor 
